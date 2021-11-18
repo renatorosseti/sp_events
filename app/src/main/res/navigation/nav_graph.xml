@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/EventsFragment">
+
+    <fragment
+        android:id="@+id/EventsFragment"
+        android:name="com.application.spevents.main.events.EventsFragment"
+        android:label="@string/events_fragment_label"
+        tools:layout="@layout/fragment_events">
+
+        <action
+            android:id="@+id/action_EventsFragment_to_DetailsFragment"
+            app:destination="@id/EventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EventDetailFragment"
+        android:name="com.application.spevents.main.details.EventDetailsFragment"
+        android:label="@string/event_details_label"
+        tools:layout="@layout/fragment_event_details">
+
+        <action
+            android:id="@+id/action_DetailsFragment_to_EventsFragment"
+            app:destination="@id/EventsFragment" />
+        <action
+            android:id="@+id/action_DetailsFragment_to_BookEventFragment"
+            app:destination="@id/BookEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/BookEventFragment"
+        android:name="com.application.spevents.main.book.BookEventFragment"
+        android:label="@string/book_event_label"
+        tools:layout="@layout/fragment_book_event">
+
+        <action
+            android:id="@+id/action_BookEventFragment_to_DetailsFragment"
+            app:destination="@id/EventDetailFragment" />
+    </fragment>
+</navigation>

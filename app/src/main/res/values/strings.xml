@@ -1,0 +1,20 @@
+<resources>
+  <string name="app_name">SP Eventos</string>
+  <string name="event_share">Compartilhar</string>
+  <!-- Strings used for fragments for navigation -->
+  <string name="events_fragment_label">Evento</string>
+  <string name="event_details_label">Detalhes do evento</string>
+  <!-- Error alert message -->
+  <string name="error_request">Erro de conexão, tente novamente!</string>
+  <string name="error_internet">No momento, você está off-line. Conecte-se à Internet para se conectar ao app SP Eventos.</string>
+  <!-- Dialog -->
+  <string name="progress_message">Carregando ...</string>
+  <string name="ok">ok</string>
+  <!-- Check-in -->
+  <string name="book_event_label">Reservar ingresso</string>
+  <string name="name">Nome</string>
+  <string name="book_event_title">Preencha seus dados e reserve seu ingresso:</string>
+  <string name="email">Email</string>
+  <string name="error_check_in">Por favor, preencha seu nome e email e tente novamente!</string>
+  <string name="succeed_check_in">Parabéns! Seu ingresso foi reservado com sucesso! Você receberá mais informações por email.</string>
+</resources>
