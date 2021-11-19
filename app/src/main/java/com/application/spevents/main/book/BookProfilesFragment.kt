@@ -30,6 +30,10 @@ class BookProfilesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
         bookProfiles = arguments?.getParcelableArrayList("profiles") ?: emptyList()
         bookProfileAdapter = BookProfileAdapter(bookProfiles)
         profilesRecyclerView.adapter = bookProfileAdapter
@@ -39,7 +43,7 @@ class BookProfilesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                findNavController().navigate(R.id.BookEventFragment)
+                findNavController().popBackStack(R.id.BookEventFragment, true)
                 true
             }
             else -> super.onOptionsItemSelected(item)

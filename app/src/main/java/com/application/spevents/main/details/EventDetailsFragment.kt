@@ -3,7 +3,6 @@ package com.application.spevents.main.details
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
@@ -27,9 +26,12 @@ class EventDetailsFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
         setUiView()
         bookButton.setOnClickListener {
-            Log.i("EventDetailsFragment", "EventId: ${eventDetail.id}")
             findNavController().navigate(
                 R.id.action_DetailsFragment_to_BookEventFragment,
                 bundleOf("eventId" to eventDetail.id)
@@ -45,7 +47,7 @@ class EventDetailsFragment : DaggerFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                findNavController().navigate(R.id.EventsFragment)
+                findNavController().popBackStack()
                 true
             }
             R.id.action_share -> {

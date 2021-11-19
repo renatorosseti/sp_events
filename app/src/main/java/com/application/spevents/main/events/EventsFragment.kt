@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.application.spevents.R
 import com.application.spevents.data.Cache.eventDetail
@@ -34,6 +33,10 @@ class EventsFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeActions()
+    }
+
+    override fun onResume() {
+        super.onResume()
         viewModel.fetchEvents()
     }
 

@@ -46,33 +46,28 @@ class EventsViewModel(
         disposable.clear()
     }
 
-    fun fetchEvents(): EventsViewState? {
+    fun fetchEvents() {
         response.value = EventsViewState.ShowLoadingState
 
-        if (networkUtil.isInternetAvailable()) {
-            val eventsDisposable: Disposable = eventsRepository.fetchEvents()
-                .subscribe(
-                    {
-                        contentFeed = it
-                        response.value = EventsViewState.ShowContentFeed(it)
-                    },
-                    {
-                        handleError(error = it)
-                    }
-                )
-            disposable.add(eventsDisposable)
-        } else {
-            if (contentFeed.isNotEmpty()) {
-                response.value = EventsViewState.ShowContentFeed(contentFeed)
-            } else {
-                response.value = EventsViewState.ShowNetworkError(
-                    R.string.error_internet,
-                    NoNetworkException(Throwable())
-                )
-            }
+        if (!networkUtil.isInternetAvailable()) {
+            response.postValue(EventsViewState.ShowNetworkError(
+                R.string.error_internet,
+                NoNetworkException(Throwable())
+            ))
+            return
         }
 
-        return response.value
+        val eventsDisposable: Disposable = eventsRepository.fetchEvents()
+            .subscribe(
+                {
+                    contentFeed = it
+                    response.postValue(EventsViewState.ShowContentFeed(it))
+                },
+                {
+                    handleError(error = it)
+                }
+            )
+        disposable.add(eventsDisposable)
     }
 
     private fun handleError(error: Throwable) {

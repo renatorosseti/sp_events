@@ -43,10 +43,15 @@ class BookEventFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         observeActions()
+    }
+
+    override fun onResume() {
+        super.onResume()
         setUIView()
     }
 
     private fun setUIView() {
+        val eventId = arguments?.getString("eventId") ?: ""
         showSoftKeyboard()
         nameEditText.requestFocus()
         bookButton.setOnClickListener {
@@ -55,7 +60,7 @@ class BookEventFragment : DaggerFragment() {
             viewModel.verifyProfileFromBookEvent(eventDetail.id, BookProfile(eventDetail.id, name, email))
         }
         showBookProfilesButton.setOnClickListener {
-            viewModel.fetchProfilesFromBookEvent(eventId = eventDetail.id)
+            viewModel.fetchProfilesFromBookEvent(eventId = eventId)
         }
     }
 
@@ -63,7 +68,7 @@ class BookEventFragment : DaggerFragment() {
         return when (item.itemId) {
             android.R.id.home -> {
                 hideSoftKeyboard(nameEditText.windowToken)
-                findNavController().navigate(R.id.EventDetailFragment)
+                findNavController().popBackStack()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -72,12 +77,12 @@ class BookEventFragment : DaggerFragment() {
 
     private fun observeActions() {
         viewModel.response.observe(viewLifecycleOwner, Observer {
+            progressDialog.hide()
             when (it) {
                 is BookEventViewState.ShowLoadingState -> {
                     progressDialog.show(requireContext())
                 }
                 is BookEventViewState.ShowBookEventSucceed -> {
-                    progressDialog.hide()
                     dialog.show(
                         context = requireContext(),
                         message = getString(R.string.succeed_check_in)
@@ -85,7 +90,6 @@ class BookEventFragment : DaggerFragment() {
                 }
                 is BookEventViewState.CheckProfileOnEvent -> {
                     if (it.isUserRegistered) {
-                        progressDialog.hide()
                         dialog.show(
                             context = requireContext(),
                             message = getString(R.string.error_email_has_registered)
@@ -95,7 +99,6 @@ class BookEventFragment : DaggerFragment() {
                     }
                 }
                 is BookEventViewState.ShowBookEventProfiles -> {
-                    progressDialog.hide()
                     hideSoftKeyboard(nameEditText.windowToken)
                     findNavController().navigate(R.id.action_BookEventFragment_to_bookProfilesFragment,
                         bundleOf("profiles" to it.profiles))
