@@ -2,7 +2,6 @@ package com.application.spevents.di
 
 import com.application.spevents.SpEventsApp
 import com.application.spevents.main.book.BookEventViewModelModule
-import com.application.spevents.main.details.EventDetailsViewModelModule
 import com.application.spevents.main.events.EventsViewModelModule
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.AndroidInjector
@@ -16,7 +15,6 @@ import dagger.Component
     ActivityBuilder::class,
     FragmentBuilder::class,
     EventsViewModelModule::class,
-    EventDetailsViewModelModule::class,
     BookEventViewModelModule::class])
 interface AppComponent : AndroidInjector<SpEventsApp> {
     @Component.Builder

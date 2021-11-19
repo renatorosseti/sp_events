@@ -1,4 +1,4 @@
-package com.application.spevents.main.model
+package com.application.spevents.model
 
 import java.io.IOException
 

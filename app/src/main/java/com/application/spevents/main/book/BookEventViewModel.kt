@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.application.spevents.R
-import com.application.spevents.main.EventsRepository
-import com.application.spevents.main.model.*
+import com.application.spevents.repository.EventsRepository
+import com.application.spevents.model.*
 import com.application.spevents.util.NetworkUtil
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -46,9 +46,12 @@ class BookEventViewModel(
             val eventsDisposable: Disposable = eventsRepository.fetchProfilesFromBookEvent()
                 .subscribe(
                     {
-                        it.filter { it.eventId == eventId }
-                        it.forEach { Log.i(TAG, "Event: ${it.eventId}, email: ${it.email}. ") }
-                        response.postValue(BookEventViewState.ShowBooEventProfiles(it))
+                        it.forEach { Log.i("BookEventViewState", "eventId: ${it.eventId}") }
+                        val profiles = it.filter { it.eventId == eventId }
+
+                        Log.i("BookEventViewState", "eventId: $eventId")
+                        Log.i("BookEventViewState", "Profiles: $profiles")
+                        response.postValue(BookEventViewState.ShowBookEventProfiles(profiles))
                     },
                     {
                         handleError(error = it)
@@ -66,41 +69,48 @@ class BookEventViewModel(
         return response.value
     }
 
-    fun checkProfileFromBookEvent(eventId: String, bookProfile: BookProfile): BookEventViewState? {
-        response.value = BookEventViewState.ShowLoadingState
+    fun verifyProfileFromBookEvent(eventId: String, bookProfile: BookProfile): BookEventViewState? {
+        response.postValue(BookEventViewState.ShowLoadingState)
 
-        if (networkUtil.isInternetAvailable()) {
-            val eventsDisposable: Disposable = eventsRepository.fetchProfilesFromBookEvent()
-                .subscribe(
-                    {
-                        it.filter { it.eventId == eventId && it.email == bookProfile.email }
-                        it.forEach { Log.i(TAG, "Event: ${it.eventId}, email: ${it.email}. ") }
-                        val isUserRegisteredForEvent = it.isNotEmpty()
-                        response.postValue(
-                            BookEventViewState.CheckProfileOnEvent(
-                                isUserRegisteredForEvent,
-                                bookProfile
-                            )
+        if (bookProfile.email.isEmpty() || bookProfile.name.isEmpty()) {
+            response.postValue(BookEventViewState.ShowErrorEmptyData)
+            return response.value
+        }
+
+        if (!networkUtil.isInternetAvailable()) {
+            response.value = BookEventViewState.ShowNetworkError(
+                R.string.error_internet,
+                NoNetworkException(Throwable())
+            )
+            return response.value
+        }
+
+
+        val eventsDisposable: Disposable = eventsRepository.fetchProfilesFromBookEvent()
+            .subscribe(
+                {
+                    val profiles = it.filter { it.eventId == eventId && it.email == bookProfile.email }
+                    it.forEach { Log.i(TAG, "Event: ${it.eventId}, email: ${it.email}. ") }
+                    val isUserRegisteredForEvent = profiles.isNotEmpty()
+                    response.postValue(
+                        BookEventViewState.CheckProfileOnEvent(
+                            isUserRegisteredForEvent,
+                            bookProfile
                         )
-                    },
-                    {
-                        handleError(error = it)
-                    }
-                )
-            disposable.add(eventsDisposable)
-
-        } else {
-            response.value = BookEventViewState.ShowNetworkError(
-                R.string.error_internet,
-                NoNetworkException(Throwable())
+                    )
+                },
+                {
+                    handleError(error = it)
+                }
             )
-        }
+        disposable.add(eventsDisposable)
 
         return response.value
     }
 
-    fun requestCheckIn(bookProfile: BookProfile): BookEventViewState? {
+    fun requestBookEvent(bookProfile: BookProfile): BookEventViewState? {
         response.value = BookEventViewState.ShowLoadingState
+        Log.i(TAG, "BookProfile: ${bookProfile.eventId}")
 
         if (networkUtil.isInternetAvailable()) {
             val eventsDisposable: Disposable = eventsRepository.requestEventCheckIn(bookProfile)

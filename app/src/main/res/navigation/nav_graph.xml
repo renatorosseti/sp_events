@@ -22,9 +22,6 @@
         tools:layout="@layout/fragment_event_details">
 
         <action
-            android:id="@+id/action_DetailsFragment_to_EventsFragment"
-            app:destination="@id/EventsFragment" />
-        <action
             android:id="@+id/action_DetailsFragment_to_BookEventFragment"
             app:destination="@id/BookEventFragment" />
     </fragment>
@@ -33,9 +30,13 @@
         android:name="com.application.spevents.main.book.BookEventFragment"
         android:label="@string/book_event_label"
         tools:layout="@layout/fragment_book_event">
-
         <action
-            android:id="@+id/action_BookEventFragment_to_DetailsFragment"
-            app:destination="@id/EventDetailFragment" />
+            android:id="@+id/action_BookEventFragment_to_bookProfilesFragment"
+            app:destination="@id/bookProfilesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bookProfilesFragment"
+        android:name="com.application.spevents.main.book.BookProfilesFragment"
+        android:label="@string/book_event_profiles_label"
+        tools:layout="@layout/fragment_book_profiles" />
 </navigation>

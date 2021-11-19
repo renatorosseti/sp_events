@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowSoftInputMode="adjustResize">
@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         style="@style/TextTitleEvent"
         android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
         android:layout_marginEnd="@dimen/dimen_16dp"
         android:text="@string/book_event_title"
         android:textAllCaps="false"
@@ -23,7 +23,7 @@
         android:id="@+id/nameEditText"
         style="@style/InputBookEvent"
         android:hint="@string/name"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="@dimen/dimen_32dp"
         android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,14 +40,26 @@
         app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/showBookProfilesButton"
+        style="@style/InputBookEvent"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/book_event_profiles_label"
+        android:textColor="@android:color/background_light"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bookButton"
         style="@style/InputBookEvent"
         android:layout_marginTop="@dimen/dimen_16dp"
         android:background="@color/colorPrimary"
         android:text="@string/book_event_label"
         android:textColor="@android:color/background_light"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        app:layout_constraintBottom_toTopOf="@id/showBookProfilesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

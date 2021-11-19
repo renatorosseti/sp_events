@@ -2,14 +2,13 @@ package com.application.spevents.main.events
 
 import android.util.Log
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.application.spevents.R
 import com.application.spevents.data.Cache.contentFeed
-import com.application.spevents.main.EventsRepository
-import com.application.spevents.main.model.HttpCallFailureException
-import com.application.spevents.main.model.NoNetworkException
-import com.application.spevents.main.model.ServerUnreachableException
+import com.application.spevents.repository.EventsRepository
+import com.application.spevents.model.HttpCallFailureException
+import com.application.spevents.model.NoNetworkException
+import com.application.spevents.model.ServerUnreachableException
 import com.application.spevents.util.NetworkUtil
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

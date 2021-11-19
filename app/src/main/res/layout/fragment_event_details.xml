@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/detailsImageView"
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
@@ -35,31 +35,31 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_image_placeholder" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleTextView"
                     style="@style/TextTitleEvent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/locationTextView"
                     style="@style/TextTitleEvent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/dateTextView"
                     style="@style/TextDescriptionEvent"
                     android:textStyle="bold" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/descriptionTextView"
                     style="@style/TextDescriptionEvent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/priceTextView"
                     style="@style/TextTitleEvent" />
             </LinearLayout>
 
         </ScrollView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bookButton"
             style="@style/InputBookEvent"
             android:layout_marginBottom="24dp"

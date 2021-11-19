@@ -3,8 +3,8 @@ package com.application.spevents.main.events
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.application.spevents.R
 import com.application.spevents.data.Cache.contentFeed
-import com.application.spevents.main.EventsRepository
-import com.application.spevents.main.model.*
+import com.application.spevents.repository.EventsRepository
+import com.application.spevents.model.*
 import com.application.spevents.util.NetworkUtil
 import io.mockk.MockKAnnotations
 import io.mockk.every

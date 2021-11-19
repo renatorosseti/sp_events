@@ -1,7 +1,7 @@
-package com.application.spevents.main
+package com.application.spevents.repository
 
 import com.application.spevents.api.Api
-import com.application.spevents.main.model.*
+import com.application.spevents.model.*
 import io.reactivex.Single
 import retrofit2.HttpException
 import java.net.SocketTimeoutException

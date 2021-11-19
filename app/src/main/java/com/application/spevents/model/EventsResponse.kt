@@ -1,4 +1,4 @@
-package com.application.spevents.main.model
+package com.application.spevents.model
 
 import com.squareup.moshi.Json
 

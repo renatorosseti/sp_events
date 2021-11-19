@@ -1,6 +1,6 @@
 package com.application.spevents.data
 
-import com.application.spevents.main.model.Event
+import com.application.spevents.model.Event
 
 object Cache {
 

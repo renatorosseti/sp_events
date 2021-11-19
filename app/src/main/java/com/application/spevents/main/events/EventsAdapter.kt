@@ -7,8 +7,8 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.application.spevents.R
-import com.application.spevents.main.model.Event
-import kotlinx.android.synthetic.main.content_item.view.*
+import com.application.spevents.model.Event
+import kotlinx.android.synthetic.main.event_item.view.*
 
 class EventsAdapter(
     private val events: List<Event>
@@ -17,7 +17,7 @@ class EventsAdapter(
     var onItemClick: ((Event) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.content_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
         return ViewHolder(view)
     }
 

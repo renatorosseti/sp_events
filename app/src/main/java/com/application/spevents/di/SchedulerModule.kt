@@ -1,6 +1,6 @@
 package com.application.spevents.di
 
-import com.application.spevents.main.model.AppRxSchedulers
+import com.application.spevents.model.AppRxSchedulers
 import dagger.Module
 import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers

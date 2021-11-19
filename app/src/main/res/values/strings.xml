@@ -8,10 +8,14 @@
   <string name="progress_message">Carregando ...</string>
   <string name="ok">ok</string>
   <string name="book_event_label">Reservar ingresso</string>
+  <string name="book_event_profiles_label">Ver reservas</string>
   <string name="name">Nome</string>
-  <string name="book_event_title">Preencha seus dados e reserve seu ingresso:</string>
   <string name="email">Email</string>
-  <string name="error_book_event">Por favor, preencha seu nome e email e tente novamente!</string>
+  <string name="share_with">Compartilhar com</string>
+  <string name="location">Localização</string>
+  <string name="book_event_title">Preencha seus dados e reserve seu ingresso:</string>
+  <string name="search_name">Buscar nome</string>
+  <string name="error_empty_data">Por favor, preencha seu nome e email e tente novamente!</string>
   <string name="error_email_has_registered">Você já fez uma reserva de ingresso para este evento!</string>
   <string name="succeed_check_in">Parabéns! Seu ingresso foi reservado com sucesso! Você receberá mais informações por email.</string>
 </resources>

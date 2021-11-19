@@ -1,7 +1,10 @@
-package com.application.spevents.main.model
+package com.application.spevents.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class BookProfile(
     @Json(name = "eventId")
     val eventId: String,
@@ -11,4 +14,4 @@ data class BookProfile(
 
     @Json(name = "email")
     val email: String
-)
+) : Parcelable

@@ -1,7 +1,7 @@
 package com.application.spevents.main.events
 
-import com.application.spevents.main.model.Event
-import com.application.spevents.main.model.NetworkException
+import com.application.spevents.model.Event
+import com.application.spevents.model.NetworkException
 
 sealed class EventsViewState {
     object ShowLoadingState: EventsViewState()

@@ -1,7 +1,7 @@
 package com.application.spevents.api
 
-import com.application.spevents.main.model.BookProfile
-import com.application.spevents.main.model.Event
+import com.application.spevents.model.BookProfile
+import com.application.spevents.model.Event
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
