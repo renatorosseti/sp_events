@@ -1,12 +1,9 @@
 package com.application.spevents.main.details
 
-import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.application.spevents.R
-import com.application.spevents.data.Cache.eventDetail
 import com.application.spevents.main.EventsRepository
 import com.application.spevents.main.model.*
 import com.application.spevents.util.NetworkUtil
@@ -25,7 +22,7 @@ class EventDetailsViewModel(
     private val TAG = EventDetailsViewModel::class.simpleName
 
     init {
-        response.addSource(networkUtil, Observer {
+        response.addSource(networkUtil) {
             if (!networkUtil.isInternetAvailable()) {
                 response.value = EventDetailsViewState.ShowNetworkError(
                     R.string.error_internet,
@@ -34,22 +31,7 @@ class EventDetailsViewModel(
             } else {
                 response.value = EventDetailsViewState.RefreshEventDetails
             }
-        })
-    }
-
-    fun handleBundleData(arguments: Bundle?): EventDetailsViewState? {
-        response.value = EventDetailsViewState.RefreshEventDetails
-        fun argString(key: String) = arguments?.getString(key)
-
-        val hasEventChecked: Boolean? = arguments?.getBoolean("checkIn")
-        if (hasEventChecked != null && hasEventChecked) {
-            val name: String? = argString("name")
-            val email: String? = argString("email")
-            requestCheckIn(eventId = eventDetail.id, name = name!!, email = email!!)
-            arguments.clear()
         }
-
-        return response.value
     }
 
     override fun onCleared() {
@@ -61,7 +43,7 @@ class EventDetailsViewModel(
         response.value = EventDetailsViewState.ShowLoadingState
 
         if (networkUtil.isInternetAvailable()) {
-            var checkInRequest = BookEvent(eventId = eventId, name = name, email = email)
+            var checkInRequest = BookProfile(eventId = eventId, name = name, email = email)
             val eventsDisposable: Disposable = eventsRepository.requestEventCheckIn(checkInRequest)
                 .subscribe(
                     {

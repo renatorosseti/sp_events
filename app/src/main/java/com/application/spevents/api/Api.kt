@@ -1,6 +1,6 @@
 package com.application.spevents.api
 
-import com.application.spevents.main.model.BookEvent
+import com.application.spevents.main.model.BookProfile
 import com.application.spevents.main.model.Event
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -16,5 +16,8 @@ interface Api {
     fun fetchEvents(): Single<List<Event>>
 
     @POST("checkin")
-    fun requestEventCheckIn(@Body body: BookEvent): Single<BookEvent>
+    fun requestEventCheckIn(@Body body: BookProfile): Single<BookProfile>
+
+    @GET("checkin")
+    fun fetchProfilesFromCheckIn(): Single<List<BookProfile>>
 }

@@ -2,7 +2,7 @@ package com.application.spevents.main.model
 
 import com.squareup.moshi.Json
 
-data class BookEvent(
+data class BookProfile(
     @Json(name = "eventId")
     val eventId: String,
 

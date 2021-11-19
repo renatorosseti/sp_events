@@ -13,15 +13,22 @@ class EventsRepository @Inject constructor(
     private val rxSchedulers: AppRxSchedulers
 ) {
 
-    fun loadEvents(): Single<List<Event>> {
+    fun fetchEvents(): Single<List<Event>> {
         return api.fetchEvents()
             .compose(mapNetworkErrors())
             .subscribeOn(rxSchedulers.network)
             .observeOn(rxSchedulers.main)
     }
 
-    fun requestEventCheckIn(checkInRequest: BookEvent): Single<BookEvent> {
+    fun requestEventCheckIn(checkInRequest: BookProfile): Single<BookProfile> {
         return api.requestEventCheckIn(checkInRequest)
+            .compose(mapNetworkErrors())
+            .subscribeOn(rxSchedulers.network)
+            .observeOn(rxSchedulers.main)
+    }
+
+    fun fetchProfilesFromBookEvent(): Single<List<BookProfile>> {
+        return api.fetchProfilesFromCheckIn()
             .compose(mapNetworkErrors())
             .subscribeOn(rxSchedulers.network)
             .observeOn(rxSchedulers.main)

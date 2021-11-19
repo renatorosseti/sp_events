@@ -26,7 +26,7 @@ class EventsViewModel(
     private val TAG = EventsViewModel::class.simpleName
 
     init {
-        response.addSource(networkUtil, Observer {
+        response.addSource(networkUtil) {
             if (!networkUtil.isInternetAvailable()) {
                 response.value = EventsViewState.ShowNetworkError(
                     R.string.error_internet,
@@ -39,7 +39,7 @@ class EventsViewModel(
                     fetchEvents()
                 }
             }
-        })
+        }
     }
 
     override fun onCleared() {
@@ -51,7 +51,7 @@ class EventsViewModel(
         response.value = EventsViewState.ShowLoadingState
 
         if (networkUtil.isInternetAvailable()) {
-            val eventsDisposable: Disposable = eventsRepository.loadEvents()
+            val eventsDisposable: Disposable = eventsRepository.fetchEvents()
                 .subscribe(
                     {
                         contentFeed = it

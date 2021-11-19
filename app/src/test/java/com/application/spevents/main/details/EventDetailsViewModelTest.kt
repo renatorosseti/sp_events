@@ -47,7 +47,7 @@ class EventDetailsViewModelTest {
         val name = "name test"
         val email = "emails test"
         val eventId = "1"
-        val checkInRequest = BookEvent(name = name, email = email, eventId = eventId)
+        val checkInRequest = BookProfile(name = name, email = email, eventId = eventId)
         every { networkUtil.isInternetAvailable() } returns true
         every { eventsRepository.requestEventCheckIn(checkInRequest) } returns Single.just(CheckInResponse("1"))
 
@@ -60,7 +60,7 @@ class EventDetailsViewModelTest {
         val name = "name test"
         val email = "emails test"
         val eventId = "1"
-        val checkInRequest = BookEvent(name = name, email = email, eventId = eventId)
+        val checkInRequest = BookProfile(name = name, email = email, eventId = eventId)
         every { networkUtil.isInternetAvailable() } returns true
         every { eventsRepository.requestEventCheckIn(checkInRequest) } throws NetworkException(Throwable())
 
@@ -104,7 +104,7 @@ class EventDetailsViewModelTest {
             coupons = listOf(Coupon())
         )
 
-        val checkInRequest = BookEvent(name = name, email = email, eventId = "id")
+        val checkInRequest = BookProfile(name = name, email = email, eventId = "id")
         every { networkUtil.isInternetAvailable() } returns true
         every { eventsRepository.requestEventCheckIn(checkInRequest) } returns Single.just(CheckInResponse("1"))
         every { bundle.getBoolean("checkIn") } returns true

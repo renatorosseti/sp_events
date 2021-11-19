@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:orientation="horizontal"
-    android:padding="@dimen/horizontal_margin">
+    android:padding="@dimen/dimen_16dp">
 
     <ProgressBar
         android:id="@+id/loader"
-        android:layout_width="@dimen/progress_length"
-        android:layout_height="@dimen/progress_length"
-        android:layout_marginRight="@dimen/soft_margin" />
+        android:layout_width="@dimen/dimen_45dp"
+        android:layout_height="@dimen/dimen_45dp"
+        android:layout_marginRight="@dimen/dimen_8dp" />
 
     <TextView
         android:id="@+id/loading_msg"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:text="@string/progress_message"
-        android:textSize="@dimen/text_size_dialog"
+        android:textSize="@dimen/dimen_20sp"
         android:textAppearance="?android:textAppearanceSmall" />
 
 </LinearLayout>

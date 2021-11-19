@@ -50,7 +50,7 @@ class EventsViewModelTest {
             )
         )
         every { networkUtil.isInternetAvailable() } returns true
-        every { eventsRepository.loadEvents() } returns Single.just(listResponse)
+        every { eventsRepository.fetchEvents() } returns Single.just(listResponse)
 
         val response= viewModel.fetchEvents()
         Assert.assertEquals("Should return the expected list when fetch succeed.", EventsViewState.ShowContentFeed(listResponse), response)
@@ -59,7 +59,7 @@ class EventsViewModelTest {
     @Test(expected = NetworkException::class)
     fun fetchEvents_whenExceptionOccurs() {
         every { networkUtil.isInternetAvailable() } returns true
-        every { eventsRepository.loadEvents() } throws NetworkException(Throwable())
+        every { eventsRepository.fetchEvents() } throws NetworkException(Throwable())
 
         val response= viewModel.fetchEvents()
         Assert.assertEquals("Should return ShowRequestError with the error message.", EventsViewState.ShowNetworkError(R.string.error_request), response)

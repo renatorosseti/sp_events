@@ -37,31 +37,31 @@
 
                 <TextView
                     android:id="@+id/titleTextView"
-                    style="@style/textTitleEvent" />
+                    style="@style/TextTitleEvent" />
 
                 <TextView
                     android:id="@+id/locationTextView"
-                    style="@style/textTitleEvent" />
+                    style="@style/TextTitleEvent" />
 
                 <TextView
                     android:id="@+id/dateTextView"
-                    style="@style/textDescriptionEvent"
+                    style="@style/TextDescriptionEvent"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/descriptionTextView"
-                    style="@style/textDescriptionEvent" />
+                    style="@style/TextDescriptionEvent" />
 
                 <TextView
                     android:id="@+id/priceTextView"
-                    style="@style/textTitleEvent" />
+                    style="@style/TextTitleEvent" />
             </LinearLayout>
 
         </ScrollView>
 
         <Button
             android:id="@+id/bookButton"
-            style="@style/inputBookEvent"
+            style="@style/InputBookEvent"
             android:layout_marginBottom="24dp"
             android:background="@color/colorPrimary"
             android:text="@string/book_event_label"

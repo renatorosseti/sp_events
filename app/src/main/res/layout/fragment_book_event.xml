@@ -4,14 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustResize">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView"
-        style="@style/textTitleEvent"
-        android:layout_marginStart="@dimen/horizontal_margin"
+        style="@style/TextTitleEvent"
+        android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/dimen_16dp"
         android:text="@string/book_event_title"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
 
     <EditText
         android:id="@+id/nameEditText"
-        style="@style/inputBookEvent"
+        style="@style/InputBookEvent"
         android:hint="@string/name"
         android:layout_marginTop="64dp"
         android:inputType="textCapSentences"
@@ -30,7 +31,7 @@
 
     <EditText
         android:id="@+id/emailEditText"
-        style="@style/inputBookEvent"
+        style="@style/InputBookEvent"
         android:hint="@string/email"
         android:layout_marginTop="24dp"
         android:inputType="textEmailAddress"
@@ -40,8 +41,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bookButton"
-        style="@style/inputBookEvent"
-        android:layout_marginTop="@dimen/horizontal_margin"
+        style="@style/InputBookEvent"
+        android:layout_marginTop="@dimen/dimen_16dp"
         android:background="@color/colorPrimary"
         android:text="@string/book_event_label"
         android:textColor="@android:color/background_light"
