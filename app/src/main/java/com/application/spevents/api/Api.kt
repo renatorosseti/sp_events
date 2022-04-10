@@ -9,15 +9,15 @@ import retrofit2.http.POST
 
 interface Api {
     companion object {
-        const val URL = "https://6195587074c1bd00176c6cff.mockapi.io/api/v1/"
+        const val URL = "https://6195587074c1bd00176c6cff.mockapi.io/api/v1"
     }
 
-    @GET("events")
+    @GET("/events")
     fun fetchEvents(): Single<List<Event>>
 
-    @POST("checkin")
+    @POST("/checkin")
     fun requestEventCheckIn(@Body body: BookProfile): Single<BookProfile>
 
-    @GET("checkin")
+    @GET("/checkin")
     fun fetchProfilesFromCheckIn(): Single<List<BookProfile>>
 }
